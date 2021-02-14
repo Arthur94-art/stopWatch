@@ -6,7 +6,7 @@ import { timer, Subject } from 'rxjs';
 import { takeUntil, repeatWhen } from 'rxjs/operators'
 
 
-let pausedTime = 0;
+
 const restartTimer$ = new Subject();
 const stopTimer$ = new Subject();
 const timer$ = timer(0, 1000).pipe(
@@ -14,18 +14,19 @@ const timer$ = timer(0, 1000).pipe(
 	repeatWhen(() => {
 		return restartTimer$;
 	})
-)
+);
 
 let isTimerRunning = false;
 restartTimer$.subscribe((value) => {
 	console.log(value)
 });
 
+let pausedTime = 0;
 
 function App() {
+	
 	const [lastTimeWaitClicked, waitClicked] = useState();
 	const [time, setTime] = useState({ ss: 0, mm: 0, hh: 0 });
-
 	const start = () => {
 		if (!isTimerRunning) {
 			isTimerRunning = true;
@@ -46,8 +47,8 @@ function App() {
 		} else {
 			waitClicked(currTime);
 		}
-
 	};
+
 	const reset = () => {
 		stopTimer$.next();
 		restartTimer$.next();
@@ -59,6 +60,7 @@ function App() {
 		setTime({ ss: 0, mm: 0, hh: 0 });
 		pausedTime = 0;
 	};
+
 	return (<div className="display">
 		<Component1 time={time} />
 		<Component2 wait={wait} reset={reset} start={start} stop={stop} />

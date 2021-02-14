@@ -1,10 +1,10 @@
 .display{
 	text-align: center;
-	zoom: 3.9;
 	border: 1px solid chocolate;
 	margin: 30px;
 	padding: 10px;
 	background: darksalmon;
+	zoom: 300%;
 }
 body{
 	background:darkslategrey;
