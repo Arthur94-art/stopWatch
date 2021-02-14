@@ -1,0 +1,11 @@
+.display{
+	text-align: center;
+	zoom: 3.9;
+	border: 1px solid chocolate;
+	margin: 30px;
+	padding: 10px;
+	background: darksalmon;
+}
+body{
+	background:darkslategrey;
+}
